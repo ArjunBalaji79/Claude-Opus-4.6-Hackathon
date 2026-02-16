@@ -16,6 +16,59 @@ When agents disagree, the system doesn't pick a winner — it shows the disagree
 
 ---
 
+## How It Works
+
+```mermaid
+flowchart LR
+    subgraph Signals["Incoming Signals"]
+        IMG["🛰 Drone/Satellite\nImages"]
+        AUD["📻 911 Calls\nRadio Dispatches"]
+        TXT["📱 Social Media\nOfficial Reports"]
+    end
+
+    subgraph Agents["Claude Agents"]
+        VA["VisionAgent\n(damage assessment)"]
+        AA["AudioAgent\n(transcript analysis)"]
+        TA["TextAgent\n(credibility scoring)"]
+    end
+
+    IMG --> VA
+    AUD --> AA
+    TXT --> TA
+
+    subgraph Graph["Situation Graph"]
+        INC["Incidents\n+ confidence scores"]
+        CON["Contradictions\ndetected across sources"]
+        ACT["Action Recommendations\nwith explicit tradeoffs"]
+    end
+
+    VA --> INC
+    AA --> INC
+    TA --> INC
+
+    INC --> VER["VerificationAgent\n(cross-source check)"]
+    VER -->|"sources disagree"| CON
+    INC --> PL["PlanningAgent\n(resource allocation)"]
+    PL --> ACT
+
+    subgraph Human["Human Decisions"]
+        DEB["Debate Room\n4 agents argue live"]
+        APP["Approve / Reject\nwith full audit trail"]
+        COP["Co-Pilot\nask Claude anything"]
+    end
+
+    CON --> DEB
+    ACT --> APP
+    Graph --> COP
+
+    style Signals fill:#1e293b,stroke:#334155,color:#e2e8f0
+    style Agents fill:#172554,stroke:#1e40af,color:#bfdbfe
+    style Graph fill:#1c1917,stroke:#78716c,color:#e7e5e4
+    style Human fill:#422006,stroke:#b45309,color:#fef3c7
+```
+
+---
+
 ## Three Views, One System
 
 ### 1. Command Dashboard
