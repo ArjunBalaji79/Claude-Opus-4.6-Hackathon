@@ -4,7 +4,7 @@
 
 > When a 6.8 earthquake hits, contradictory reports flood in simultaneously. A satellite shows a bridge intact. A first-responder says it collapsed. Social media is hysterical. CrisisCore uses 6 specialized Claude agents to process the chaos, surface the contradictions, and let human operators make auditable decisions with explicit tradeoffs.
 
-Built with **Claude Opus 4.6** for the Anthropic Hackathon.
+Built with **Claude Opus 4.6** for the Anthropic Hackathon. Selected as one of 500 builders across the world for the final round. Demo: https://youtu.be/v__P93xmKig
 
 ---
 
